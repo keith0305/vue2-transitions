@@ -43,10 +43,15 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					animationFillMode: 'both',
-					animationTimingFunction: 'ease-out',
+					'animation-fill-mode': 'both',
+					'animation-timing-function': 'ease-out',
 				};
 			},
+		},
+
+		transitionConfigCSS: {
+			type: Object,
+			default: () => ({}),
 		},
 	},
 	computed: {
@@ -58,18 +63,23 @@ export default {
 				...this.$listeners,
 				beforeEnter: this.beforeEnter,
 				afterEnter: (el) => {
-					console.log('afterEnter');
 					this.cleanUpStyles(el);
 					this.$emit('after-enter', el);
 				},
 				beforeLeave: this.beforeLeave,
 				leave: this.leave,
 				afterLeave: (el) => {
-					console.log('afterLeave');
 					this.cleanUpStyles(el);
 					this.$emit('after-leave', el);
 				},
 			};
+		},
+
+		styleMerged () {
+			return {
+				...this.styles,
+				...this.transitionConfigCSS,
+			}
 		},
 	},
 	methods: {
@@ -84,10 +94,10 @@ export default {
 			this.$emit('before-enter', el);
 		},
 		cleanUpStyles(el) {
-			Object.keys(this.styles).forEach(key => {
-				const styleValue = this.styles[key];
+			Object.keys(this.styleMerged).forEach(key => {
+				const styleValue = this.styleMerged[key];
 				if (styleValue) {
-					el.style[key] = '';
+					el.style.setProperty(key, '');
 				}
 			});
 			el.style.animationDuration = '';
@@ -109,10 +119,10 @@ export default {
 		},
 		setStyles(el) {
 			this.setTransformOrigin(el);
-			Object.keys(this.styles).forEach(key => {
-				const styleValue = this.styles[key];
+			Object.keys(this.styleMerged).forEach(key => {
+				const styleValue = this.styleMerged[key];
 				if (styleValue) {
-					el.style[key] = styleValue;
+					el.style.setProperty(key, styleValue);
 				}
 			});
 		},

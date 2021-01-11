@@ -15,6 +15,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -101,6 +102,7 @@ export default {
 	},
 };
 </script>
+
 <style>
 .collapse-move {
 	transition: transform 0.3s ease-in-out;

@@ -11,6 +11,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -19,6 +20,7 @@ export default {
 	mixins: [baseTransition],
 };
 </script>
+
 <style>
 @keyframes fadeIn {
 	from {

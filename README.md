@@ -108,8 +108,8 @@ props: {
 		type: Object,
 		default: () => {
 			return {
-				animationFillMode: 'both',  
-				animationTimingFunction: 'ease-out'
+				'animation-fill-mode': 'both',  
+				'animation-timing-function': 'ease-out'
 			}
 		}
 	}

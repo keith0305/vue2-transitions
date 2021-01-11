@@ -1,3 +1,8 @@
+<!-- Accepted transitionConfigCSS:
+	{
+		'--scale3d': '0.3',
+	}
+-->
 <template>
 	<component
 		:is="componentType"
@@ -11,6 +16,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -19,13 +25,14 @@ export default {
 	mixins: [baseTransition],
 };
 </script>
+
 <style lang="scss">
 @import "move";
 
 @keyframes zoomIn {
 	from {
 		opacity: 0;
-		transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(var(--scale3d, 0.3), var(--scale3d, 0.3), var(--scale3d, 0.3));
 	}
 
 	50% {
@@ -44,7 +51,7 @@ export default {
 
 	50% {
 		opacity: 0;
-		transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(var(--scale3d, 0.3), var(--scale3d, 0.3), var(--scale3d, 0.3));
 	}
 
 	to {

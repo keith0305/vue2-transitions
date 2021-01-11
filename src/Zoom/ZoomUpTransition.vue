@@ -1,3 +1,8 @@
+<!-- Accepted transitionConfigCSS:
+	{
+		'--scale3d': '0.3',
+	}
+-->
 <template>
 	<component
 		:is="componentType"
@@ -11,6 +16,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -21,8 +27,8 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					animationFillMode: 'both',
-					animationTimingFunction: 'ease-out',
+					'animation-fill-mode': 'both',
+					'animation-timing-function': 'ease-out',
 				};
 			},
 		},
@@ -30,6 +36,7 @@ export default {
 	mixins: [baseTransition],
 };
 </script>
+
 <style lang="scss">
 @import "move";
 

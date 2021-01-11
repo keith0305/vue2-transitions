@@ -1,3 +1,8 @@
+<!-- Accepted transitionConfigCSS:
+	{
+		'--scale': '0',
+	}
+-->
 <template>
 	<component
 		:is="componentType"
@@ -11,6 +16,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -26,19 +32,20 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					animationFillMode: 'both',
-					animationTimingFunction: 'cubic-bezier(.25,.8,.50,1)',
+					'animation-fill-mode': 'both',
+					'animation-timing-function': 'cubic-bezier(.25,.8,.50,1)',
 				};
 			},
 		},
 	},
 };
 </script>
+
 <style>
 @keyframes scaleIn {
 	from {
 		opacity: 0;
-		transform: scale(0);
+		transform: scale(var(--scale, 0));
 	}
 
 	to {
@@ -57,7 +64,7 @@ export default {
 
 	to {
 		opacity: 0;
-		transform: scale(0);
+		transform: scale(var(--scale, 0));
 	}
 }
 

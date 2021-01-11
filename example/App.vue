@@ -177,7 +177,7 @@ export default {
 			selected: null,
 			show: true,
 			isGroup: false,
-			duration: 300,
+			duration: 3000,
 			delay: 0,
 			transitionName: 'FadeTransition',
 		};

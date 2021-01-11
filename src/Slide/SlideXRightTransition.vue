@@ -1,3 +1,8 @@
+<!-- Accepted transitionConfigCSS:
+	{
+		'--translateX': '15px',
+	}
+-->
 <template>
 	<component
 		:is="componentType"
@@ -11,6 +16,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -22,43 +28,41 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					animationFillMode: 'both',
-					animationTimingFunction: 'cubic-bezier(.25,.8,.50,1)',
+					'animation-fill-mode': 'both',
+					'animation-timing-function': 'cubic-bezier(.25,.8,.50,1)',
 				};
 			},
 		},
 	},
 };
 </script>
+
 <style lang="scss">
 @import "move";
 
 @keyframes slideXRightIn {
 	from {
 		opacity: 0;
-		transform: translateX(var(--translateX));
+		transform: translateX(var(--translateX, 15px));
 	}
 
 	to {
 		opacity: 1;
-		transform: translateX(0);
 	}
 }
 
 .slideXRightIn {
-	--translateX: 150px;
 	animation-name: slideXRightIn;
 }
 
 @keyframes slideXRightOut {
 	from {
 		opacity: 1;
-		transform: translateX(0);
 	}
 
 	to {
-		opacity: 0.5;
-		transform: translateX(var(--translateX));
+		opacity: 0;
+		transform: translateX(var(--translateX, 15px));
 	}
 }
 

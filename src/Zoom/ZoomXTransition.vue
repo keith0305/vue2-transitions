@@ -1,3 +1,8 @@
+<!-- Accepted transitionConfigCSS:
+	{
+		'--scaleX': '0',
+	}
+-->
 <template>
 	<component
 		:is="componentType"
@@ -11,6 +16,7 @@
 		<slot></slot>
 	</component>
 </template>
+
 <script>
 import { baseTransition } from '../mixins/index.js';
 
@@ -21,8 +27,8 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					animationFillMode: 'both',
-					animationTimingFunction: 'cubic-bezier(.55,0,.1,1)',
+					'animation-fill-mode': 'both',
+					'animation-timing-function': 'cubic-bezier(.55,0,.1,1)',
 				};
 			},
 		},
@@ -30,13 +36,14 @@ export default {
 	mixins: [baseTransition],
 };
 </script>
+
 <style lang="scss">
 @import "move";
 
 @keyframes zoomInX {
 	from {
 		opacity: 0;
-		transform: scaleX(0);
+		transform: scaleX(var(--scaleX, 0));
 	}
 
 	50% {
@@ -55,7 +62,7 @@ export default {
 
 	50% {
 		opacity: 0;
-		transform: scaleX(0);
+		transform: scaleX(var(--scaleX, 0));
 	}
 
 	to {
