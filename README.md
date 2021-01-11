@@ -1,4 +1,6 @@
-# vue2-transitions
+# Vuesition
+
+This project is a fork of 'vue2-transitions'.
 
 ## [Demo](https://binarcode.github.io/vue2-transitions)
 ## [Codesandbox](https://codesandbox.io/s/v80qxp7nwy)

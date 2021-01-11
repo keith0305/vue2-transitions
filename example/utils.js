@@ -1,6 +1,6 @@
 export const randomInt = (fr, to) => {
-	return Math.round(fr + Math.random() * to)
-}
+	return Math.round(fr + (Math.random() * to));
+};
 
 export const generateRGBColors = (count) => {
 	return Array.apply(null, new Array(count)).map((none, i) => {
@@ -8,12 +8,12 @@ export const generateRGBColors = (count) => {
 			r: randomInt(0, 255),
 			g: randomInt(0, 255),
 			b: randomInt(0, 255),
-			key: Math.random()
-		}
-	})
-}
+			key: Math.random(),
+		};
+	});
+};
 
 export default {
 	randomInt,
-	generateRGBColors
-}
+	generateRGBColors,
+};

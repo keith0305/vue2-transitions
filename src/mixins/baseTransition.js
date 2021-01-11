@@ -58,12 +58,14 @@ export default {
 				...this.$listeners,
 				beforeEnter: this.beforeEnter,
 				afterEnter: (el) => {
+					console.log('afterEnter');
 					this.cleanUpStyles(el);
 					this.$emit('after-enter', el);
 				},
 				beforeLeave: this.beforeLeave,
 				leave: this.leave,
 				afterLeave: (el) => {
+					console.log('afterLeave');
 					this.cleanUpStyles(el);
 					this.$emit('after-leave', el);
 				},

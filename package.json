@@ -19,6 +19,7 @@
 		"example": "poi",
 		"dev": "poi",
 		"lint": "eslint ./src/**/*.js ./src/**/*.vue --fix",
+		"lint-example": "eslint ./example/**/*.js ./example/**/*.vue --fix",
 		"build:example": "poi build"
 	},
 	"author": {
@@ -89,5 +90,8 @@
 		"vue": "^2.5.13",
 		"vue-github-badge": "^1.0.1",
 		"vue-test-utils": "^1.0.0-beta.2"
+	},
+	"dependencies": {
+		"node-sass": "^5.0.0"
 	}
 }

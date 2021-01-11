@@ -36,26 +36,29 @@ export default {
 @keyframes slideXRightIn {
 	from {
 		opacity: 0;
-		transform: translateX(15px);
+		transform: translateX(var(--translateX));
 	}
 
 	to {
 		opacity: 1;
+		transform: translateX(0);
 	}
 }
 
 .slideXRightIn {
+	--translateX: 150px;
 	animation-name: slideXRightIn;
 }
 
 @keyframes slideXRightOut {
 	from {
 		opacity: 1;
+		transform: translateX(0);
 	}
 
 	to {
-		opacity: 0;
-		transform: translateX(15px);
+		opacity: 0.5;
+		transform: translateX(var(--translateX));
 	}
 }
 
