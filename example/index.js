@@ -10,14 +10,14 @@ import locale from 'element-ui/lib/locale'
 locale.use(lang)
 
 Vue.use(Tippy, {
-  position: 'top',
-  theme: 'light',
-  size: 'small',
-  animation: 'scale',
-  performance: true,
-  arrow: true,
-  trigger: 'click',
-  duration: [200, 200]
+	position: 'top',
+	theme: 'light',
+	size: 'small',
+	animation: 'scale',
+	performance: true,
+	arrow: true,
+	trigger: 'click',
+	duration: [200, 200]
 })
 Vue.use(Select)
 Vue.use(Option)
@@ -25,6 +25,6 @@ Vue.use(OptionGroup)
 Vue.use(InputNumber)
 Vue.use(Switch)
 new Vue({
-  el: '#app',
-  render: h => h(App)
+	el: '#app',
+	render: h => h(App)
 })

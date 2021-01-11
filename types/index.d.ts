@@ -3,24 +3,24 @@ import Vue, { VueConstructor, Component, PluginFunction } from 'vue'
 declare const Transitions: Transitions
 export default Transitions
 export declare interface Transitions {
-  install: PluginFunction<TransitionOptions>
+	install: PluginFunction<TransitionOptions>
 }
 
 export declare interface TransitionOptions {
-    components?: { name: TransitionName }[]
+		components?: { name: TransitionName }[]
 }
 
 export type TransitionName =
-  'fade-transition' |
-  'zoom-center-transition' |
-  'zoom-x-transition' |
-  'zoom-y-transition' |
-  'collapse-transition' |
-  'scale-transition' |
-  'slide-y-up-transition' |
-  'slide-y-down-transition' |
-  'slide-x-left-transition' |
-  'slide-x-right-transition'
+	'fade-transition' |
+	'zoom-center-transition' |
+	'zoom-x-transition' |
+	'zoom-y-transition' |
+	'collapse-transition' |
+	'scale-transition' |
+	'slide-y-up-transition' |
+	'slide-y-down-transition' |
+	'slide-x-left-transition' |
+	'slide-x-right-transition'
 
 export const FadeTransition: Component
 export const ZoomCenterTransition: Component

@@ -1,67 +1,67 @@
 <template>
-  <component :is="componentType"
-             :tag="tag"
-             v-bind="$attrs"
-             v-on="hooks"
-             enter-active-class="zoomInX"
-             move-class="zoom-move"
-             leave-active-class="zoomOutX">
-    <slot></slot>
-  </component>
+	<component :is="componentType"
+						 :tag="tag"
+						 v-bind="$attrs"
+						 v-on="hooks"
+						 enter-active-class="zoomInX"
+						 move-class="zoom-move"
+						 leave-active-class="zoomOutX">
+		<slot></slot>
+	</component>
 </template>
 <script>
-  import {baseTransition} from '../mixins/index.js'
+	import {baseTransition} from '../mixins/index.js'
 
-  export default {
-    name: 'zoom-x-transition',
-    props: {
-      styles: {
-        type: Object,
-        default: () => {
-          return {
-            animationFillMode: 'both',
-            animationTimingFunction: 'cubic-bezier(.55,0,.1,1)'
-          }
-        }
-      }
-    },
-    mixins: [baseTransition]
-  }
+	export default {
+		name: 'zoom-x-transition',
+		props: {
+			styles: {
+				type: Object,
+				default: () => {
+					return {
+						animationFillMode: 'both',
+						animationTimingFunction: 'cubic-bezier(.55,0,.1,1)'
+					}
+				}
+			}
+		},
+		mixins: [baseTransition]
+	}
 </script>
 <style lang="scss">
-  @import "move";
+	@import "move";
 
-  @keyframes zoomInX {
-    from {
-      opacity: 0;
-      transform: scaleX(0);
-    }
+	@keyframes zoomInX {
+		from {
+			opacity: 0;
+			transform: scaleX(0);
+		}
 
-    50% {
-      opacity: 1;
-    }
-  }
+		50% {
+			opacity: 1;
+		}
+	}
 
-  .zoomInX {
-    animation-name: zoomInX;
-  }
+	.zoomInX {
+		animation-name: zoomInX;
+	}
 
-  @keyframes zoomOutX {
-    from {
-      opacity: 1;
-    }
+	@keyframes zoomOutX {
+		from {
+			opacity: 1;
+		}
 
-    50% {
-      opacity: 0;
-      transform: scaleX(0);
-    }
+		50% {
+			opacity: 0;
+			transform: scaleX(0);
+		}
 
-    to {
-      opacity: 0;
-    }
-  }
+		to {
+			opacity: 0;
+		}
+	}
 
-  .zoomOutX {
-    animation-name: zoomOutX;
-  }
+	.zoomOutX {
+		animation-name: zoomOutX;
+	}
 </style>
