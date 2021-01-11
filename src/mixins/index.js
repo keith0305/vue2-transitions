@@ -1,5 +1,5 @@
-import baseTransition from './baseTransition'
+import baseTransition from './baseTransition';
 
 export {
-	baseTransition
-}
+	baseTransition,
+};

@@ -7,7 +7,7 @@ export default {
 		 */
 		duration: {
 			type: [Number, Object],
-			default: 300
+			default: 300,
 		},
 		/**
 		 * Transition delay. Number for specifying the same delay for enter/leave transitions
@@ -15,7 +15,7 @@ export default {
 		 */
 		delay: {
 			type: [Number, Object],
-			default: 0
+			default: 0,
 		},
 		/**
 		 * Whether the component should be a `transition-group` component.
@@ -26,7 +26,7 @@ export default {
 		 */
 		tag: {
 			type: String,
-			default: 'span'
+			default: 'span',
 		},
 		/**
 		 *  Transform origin property https://tympanus.net/codrops/css_reference/transform-origin/.
@@ -34,7 +34,7 @@ export default {
 		 */
 		origin: {
 			type: String,
-			default: ''
+			default: '',
 		},
 		/**
 		 * Element styles that are applied during transition. These styles are applied on @beforeEnter and @beforeLeave hooks
@@ -44,87 +44,87 @@ export default {
 			default: () => {
 				return {
 					animationFillMode: 'both',
-					animationTimingFunction: 'ease-out'
-				}
-			}
-		}
+					animationTimingFunction: 'ease-out',
+				};
+			},
+		},
 	},
 	computed: {
 		componentType() {
-			return this.group ? 'transition-group' : 'transition'
+			return this.group ? 'transition-group' : 'transition';
 		},
 		hooks() {
 			return {
 				...this.$listeners,
 				beforeEnter: this.beforeEnter,
 				afterEnter: (el) => {
-					this.cleanUpStyles(el)
-					this.$emit('after-enter', el)
+					this.cleanUpStyles(el);
+					this.$emit('after-enter', el);
 				},
 				beforeLeave: this.beforeLeave,
 				leave: this.leave,
 				afterLeave: (el) => {
-					this.cleanUpStyles(el)
-					this.$emit('after-leave', el)
+					this.cleanUpStyles(el);
+					this.$emit('after-leave', el);
 				},
-			}
-		}
+			};
+		},
 	},
 	methods: {
 		beforeEnter(el) {
-			let enterDuration = this.duration.enter ? this.duration.enter : this.duration
-			el.style.animationDuration = `${enterDuration}ms`
+			let enterDuration = this.duration.enter ? this.duration.enter : this.duration;
+			el.style.animationDuration = `${enterDuration}ms`;
 
-			let enterDelay = this.delay.enter ? this.delay.enter : this.delay
-			el.style.animationDelay = `${enterDelay}ms`
+			let enterDelay = this.delay.enter ? this.delay.enter : this.delay;
+			el.style.animationDelay = `${enterDelay}ms`;
 
-			this.setStyles(el)
-			this.$emit('before-enter', el)
+			this.setStyles(el);
+			this.$emit('before-enter', el);
 		},
 		cleanUpStyles(el) {
 			Object.keys(this.styles).forEach(key => {
-				const styleValue = this.styles[key]
+				const styleValue = this.styles[key];
 				if (styleValue) {
-					el.style[key] = ''
+					el.style[key] = '';
 				}
-			})
-			el.style.animationDuration = ''
-			el.style.animationDelay = ''
+			});
+			el.style.animationDuration = '';
+			el.style.animationDelay = '';
 		},
 		beforeLeave(el) {
-			let leaveDuration = this.duration.leave ? this.duration.leave : this.duration
-			el.style.animationDuration = `${leaveDuration}ms`
+			let leaveDuration = this.duration.leave ? this.duration.leave : this.duration;
+			el.style.animationDuration = `${leaveDuration}ms`;
 
-			let leaveDelay = this.delay.leave ? this.delay.leave : this.delay
-			el.style.animationDelay = `${leaveDelay}ms`
+			let leaveDelay = this.delay.leave ? this.delay.leave : this.delay;
+			el.style.animationDelay = `${leaveDelay}ms`;
 
-			this.setStyles(el)
-			this.$emit('before-leave', el)
+			this.setStyles(el);
+			this.$emit('before-leave', el);
 		},
 		leave(el, done) {
-			this.setAbsolutePosition(el)
-			this.$emit('leave', el, done)
+			this.setAbsolutePosition(el);
+			this.$emit('leave', el, done);
 		},
 		setStyles(el) {
-			this.setTransformOrigin(el)
+			this.setTransformOrigin(el);
 			Object.keys(this.styles).forEach(key => {
-				const styleValue = this.styles[key]
+				const styleValue = this.styles[key];
 				if (styleValue) {
-					el.style[key] = styleValue
+					el.style[key] = styleValue;
 				}
-			})
+			});
 		},
 		setAbsolutePosition(el) {
 			if (this.group) {
-				el.style.position = 'absolute'
+				el.style.position = 'absolute';
 			}
-			return this
+			return this;
 		},
 		setTransformOrigin(el) {
 			if (this.origin) {
-				el.style.transformOrigin = this.origin
+				el.style.transformOrigin = this.origin;
 			}
-			return this
-		}
-	}
-}
+			return this;
+		},
+	},
+};
